@@ -68,14 +68,6 @@
 
         <dependencies>
 
-            <!-- DialogFlow -->
-
-            <dependency>
-                <groupId>com.google.cloud</groupId>
-                <artifactId>google-cloud-dialogflow</artifactId>
-                <version>${dialogflow.version}</version>
-            </dependency>
-
             <!-- Utils -->
 
             <dependency>
