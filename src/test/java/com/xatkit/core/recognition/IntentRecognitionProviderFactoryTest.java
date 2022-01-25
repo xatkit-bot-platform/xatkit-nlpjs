@@ -6,6 +6,8 @@ import com.xatkit.core.XatkitBot;
 import com.xatkit.core.recognition.nlpjs.NlpjsIntentRecognitionProvider;
 import com.xatkit.core.recognition.nlpjs.NlpjsIntentRecognitionProviderTest;
 import com.xatkit.core.recognition.processor.SpacePunctuationPreProcessor;
+import com.xatkit.core.recognition.processor.TrimParameterValuesPostProcessor;
+import com.xatkit.core.recognition.processor.TrimPunctuationPostProcessor;
 import com.xatkit.core.server.XatkitServer;
 import org.apache.commons.configuration2.Configuration;
 import org.junit.After;
@@ -54,12 +56,15 @@ public class IntentRecognitionProviderFactoryTest extends AbstractXatkitTest {
         assertThat(provider).as("Not null IntentRecognitionProvider").isNotNull();
         assertThat(provider).as("IntentRecognitionProvider is a DialogFlowIntentRecognitionProvider").isInstanceOf(NlpjsIntentRecognitionProvider.class);
         assertThat(provider.getRecognitionMonitor()).as("Recognition monitor is not null").isNull();
-        assertThat(provider.getPreProcessors()).as("PreProcessor list is empty").hasSize(1);
+        assertThat(provider.getPreProcessors()).hasSize(1);
         /*
          * NLP.js provider uses SpacePunctuationPreProcessor by default to improve the quality of intent recognition.
+         * It also uses TrimPunctuationPostProcessor and TrimParameterValuesPostProcessor for post processing.
          */
         assertThat(provider.getPreProcessors().get(0)).isInstanceOf(SpacePunctuationPreProcessor.class);
-        assertThat(provider.getPostProcessors()).as("PostProcessor list is empty").isEmpty();
+        assertThat(provider.getPostProcessors()).hasSize(2);
+        assertThat(provider.getPostProcessors()).anyMatch(p -> p instanceof TrimPunctuationPostProcessor);
+        assertThat(provider.getPostProcessors()).anyMatch(p -> p instanceof TrimParameterValuesPostProcessor);
     }
 
     @Test
@@ -73,8 +78,11 @@ public class IntentRecognitionProviderFactoryTest extends AbstractXatkitTest {
         assertThat(provider.getPreProcessors()).as("PreProcessor list is empty").hasSize(1);
         /*
          * NLP.js provider uses SpacePunctuationPreProcessor by default to improve the quality of intent recognition.
+         * It also uses TrimPunctuationPostProcessor and TrimParameterValuesPostProcessor for post processing.
          */
         assertThat(provider.getPreProcessors().get(0)).isInstanceOf(SpacePunctuationPreProcessor.class);
-        assertThat(provider.getPostProcessors()).as("PostProcessor list is empty").isEmpty();
+        assertThat(provider.getPostProcessors()).hasSize(2);
+        assertThat(provider.getPostProcessors()).anyMatch(p -> p instanceof TrimPunctuationPostProcessor);
+        assertThat(provider.getPostProcessors()).anyMatch(p -> p instanceof TrimParameterValuesPostProcessor);
     }
 }
