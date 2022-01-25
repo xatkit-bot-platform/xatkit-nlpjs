@@ -18,6 +18,7 @@ main() {
     git checkout master
     mvn clean install -DskipTests > /dev/null
     cd ../xatkit-runtime
+    git checkout feature/split
     mvn clean install -DskipTests > /dev/null
     e "Done"
 }
