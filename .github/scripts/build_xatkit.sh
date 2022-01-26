@@ -20,6 +20,10 @@ main() {
     cd ../xatkit-runtime
     git checkout feature/split
     mvn clean install -DskipTests > /dev/null
+    cd /tmp
+    git clone https://github.com/xatkit-bot-platform/xatkit-processors.git > /dev/null
+    cd xatkit-processors
+    mvn clean install -DskipTests > /dev/null
     e "Done"
 }
 
