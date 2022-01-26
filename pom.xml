@@ -17,12 +17,29 @@
     <name>NLP.js Connector for Xatkit</name>
 
     <properties>
+        <retrofit.version>2.9.0</retrofit.version>
+        <okhttp3.logging-interceptor.version>3.14.0</okhttp3.logging-interceptor.version>
         <lombok.version>1.18.12</lombok.version>
     </properties>
 
     <dependencies>
 
         <!-- Utils -->
+
+        <dependency>
+            <groupId>com.squareup.retrofit2</groupId>
+            <artifactId>retrofit</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.squareup.retrofit2</groupId>
+            <artifactId>converter-gson</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>logging-interceptor</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -75,6 +92,24 @@
         <dependencies>
 
             <!-- Utils -->
+
+            <dependency>
+                <groupId>com.squareup.retrofit2</groupId>
+                <artifactId>retrofit</artifactId>
+                <version>${retrofit.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.squareup.retrofit2</groupId>
+                <artifactId>converter-gson</artifactId>
+                <version>${retrofit.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.squareup.okhttp3</groupId>
+                <artifactId>logging-interceptor</artifactId>
+                <version>${okhttp3.logging-interceptor.version}</version>
+            </dependency>
 
             <dependency>
                 <groupId>org.projectlombok</groupId>
