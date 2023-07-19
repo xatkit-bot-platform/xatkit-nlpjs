@@ -20,7 +20,7 @@
     <properties>
         <retrofit.version>2.9.0</retrofit.version>
         <okhttp3.logging-interceptor.version>3.14.0</okhttp3.logging-interceptor.version>
-        <lombok.version>1.18.12</lombok.version>
+        <lombok.version>LATEST</lombok.version>
     </properties>
 
     <dependencies>
